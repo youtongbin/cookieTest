@@ -41,6 +41,8 @@
             List<Product> products = (List<Product>) request.getAttribute("products");
         %>
 
+        欢迎${user.username}
+        <a href="exit">退出</a>
         <table>
             <thead>
                 <tr>

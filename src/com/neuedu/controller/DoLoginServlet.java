@@ -6,9 +6,7 @@ import com.neuedu.service.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet("/doLogin")
@@ -28,6 +26,18 @@ public class DoLoginServlet extends HttpServlet {
             if(user != null){
                 if (password.equals(user.getPassword())){
                     System.out.println(user);
+
+                    //账号密码匹配，存储cookie信息
+                    Cookie coo = new Cookie("username",username);
+                    Cookie coop = new Cookie("password",password);
+                    coo.setMaxAge(60 * 60 * 24 * 7);
+                    coop.setMaxAge(60 * 60 * 24 * 7);
+                    resp.addCookie(coo);
+                    resp.addCookie(coop);
+                    HttpSession session = req.getSession();
+                    session.setAttribute("user",user);
+
+
                     resp.getWriter().write("0");
                 }else {
                     resp.getWriter().write("1");
