@@ -42,7 +42,8 @@
         %>
 
         欢迎${user.username}
-        <a href="exit">退出</a>
+        <a href="${path}/list">搜索</a>
+        <a href="${path}/exit">退出</a>
         <table>
             <thead>
                 <tr>
@@ -68,11 +69,11 @@
             </tbody>
         </table>
 
-        <a href="add">添加</a>
+        <a href="${path}/add">添加</a>
 
 
 
-        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="${path}/js/jquery-3.3.1.min.js"></script>
         <script type="text/javascript">
             // S(function () {
             //     $.ajax({
@@ -84,6 +85,7 @@
             //         }
             //     });
             // });
+
 
 
         </script>

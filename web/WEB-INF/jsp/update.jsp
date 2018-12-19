@@ -14,7 +14,7 @@
     <title>修改</title>
 </head>
 <body>
-<form action="doUpdate" method="post" enctype="multipart/form-data">
+<form action="${path}/doUpdate" method="post" enctype="multipart/form-data">
     <input type="text" hidden="hidden" name="productId" value="${product.productId}">
     <table>
         <tr>
@@ -28,9 +28,30 @@
         <tr>
             <td>商品图片：</td>
             <td><input type="file" name="file"><br></td>
+            <td><img alt="图片" id="img" width="30" height="30" src="${product.url}"></td>
         </tr>
     </table>
     <input type="submit" value="修改">
+
+
+    <script type="text/javascript">
+
+        function imgChange(obj) {
+            var str = obj.files[0].name.substr(obj.files[0].name.indexOf(".") +1);
+            var img = document.getElementById("img");
+            if (str == "png" || str == "jpg") {
+                //文件读取器
+                var reader = new FileReader();
+                reader.onload = function (ev) {
+                    img.src = ev.target.result;
+                }
+                reader.readAsDataURL(obj.files[0]);
+            }else {
+                img.src="";
+            }
+
+        }
+    </script>
 </form>
 </body>
 </html>

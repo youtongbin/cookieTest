@@ -10,4 +10,5 @@ public interface IProductDao {
     int insert(Product product);
     Product getOne(int productId);
     int update(Product product);
+    List<Product> getFuzzyQuery(String key);
 }

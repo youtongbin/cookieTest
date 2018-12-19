@@ -10,4 +10,5 @@ public interface IProductService {
     int insert(Product product);
     Product getOne(int productId);
     int update(Product product);
+    List<Product> getFuzzyQuery(String key);
 }

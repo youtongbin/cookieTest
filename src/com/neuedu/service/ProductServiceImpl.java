@@ -32,4 +32,9 @@ public class ProductServiceImpl implements IProductService {
     public int update(Product product) {
         return productDao.update(product);
     }
+
+    @Override
+    public List<Product> getFuzzyQuery(String key) {
+        return productDao.getFuzzyQuery(key);
+    }
 }

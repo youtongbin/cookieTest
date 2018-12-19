@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="/Path.jsp"%>
 <html>
 <head>
 
@@ -43,7 +44,7 @@
         <input type="button" value="注册" id="btn1" disabled="disabled">
     </form>
 
-    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="${path}/js/jquery-3.3.1.min.js"></script>
     <script>
         $(function (){
             var username;
@@ -57,7 +58,7 @@
                 tele = $("#tele").val();
 
                 $.ajax({
-                    url:"doRegisterCheck",
+                    url:"${path}/doRegisterCheck",
                     type:"post",
                     data:{"username":username,"password":password,"passwords":passwords,"tele":tele},
                     success:function(result){
@@ -83,13 +84,13 @@
 
             $("#btn1").click(function () {
                 $.ajax({
-                    url:"doRegister",
+                    url:"${path}/doRegister",
                     type:"post",
                     data:{"username":username,"password":password,"passwords":passwords,"tele":tele},
                     success:function (result) {
                         if (result == "1"){
                             alert("注册成功");
-                            window.location.href="login";
+                            window.location.href="${path}/login";
                         }
                     }
                 });

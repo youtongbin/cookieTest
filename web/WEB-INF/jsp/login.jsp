@@ -35,7 +35,7 @@
                 </tr>
             </table>
 
-            <a href="register">前往注册</a>
+            <a href="${path}/register">前往注册</a>
         </form>
 
         <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
@@ -44,12 +44,12 @@
                 $("#btn1").click(function () {
                     var user =  $("#form").serialize();
                     $.ajax({
-                        url:"doLogin",
+                        url:"${path}/doLogin",
                         type:"post",
                         data:user,
                         success:function (result) {
                             if (result == "0"){
-                                window.location.href="main";
+                                window.location.href="${path}/main";
                             } else if (result == "1"){
                                 $("#message").text("密码错误！");
                             } else if (result == "2"){
